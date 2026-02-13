@@ -23,6 +23,11 @@ This web application displays lists of board games and their reviews. While anyo
 - Twitter Bootstrap
 - Maven
 
+## 📊 Monitoring & Observability (Grafana + Prometheus)
+
+The project includes a complete monitoring setup using **Prometheus, Grafana, cAdvisor, Node Exporter, and MySQL Exporter** to visualize application, container, and database metrics.
+
+
 ### 🔹 Boardgame - Running
 ![Boardgame-app Running](https://github.com/DevOpsWithAlii/Boardgame/blob/main/src/main/Screenshot%20(339).png)
 
@@ -70,6 +75,7 @@ This web application displays lists of board games and their reviews. While anyo
   - username: bugs    |     password: bunny (user role)
   - username: daffy   |     password: duck  (manager role)
 5. You can also sign-up as a new user and customize your role to play with the application! 😊
+
 
 
 
