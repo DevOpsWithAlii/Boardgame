@@ -1,0 +1,27 @@
+global:
+  scrape_interval: 1m                                # Sets default scrape time to 1 minute
+
+scrape_configs:                                      # Defines what Prometheus should monitor.
+  - job_name: 'prometheus'
+    scrape_interval: 1m
+    static_configs:                                 
+      - targets: ['localhost:9090']
+# Prometheus monitors its own health
+# Useful for debugging Prometheus itself
+
+
+  - job_name: 'docker'
+    scrape_interval: 1m
+    static_configs:
+      - targets: ['cadvisor:8080']
+# Collects metrics for each Docker container
+# CPU, memory, disk, network usage
+
+  - job_name: 'node'
+    scrape_interval: 1m
+    static_configs:
+      - targets: ['node-exporter:9100']
+# Collects Linux system metrics
+# Helps detect server-level issues
+
+
