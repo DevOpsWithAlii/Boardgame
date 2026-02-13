@@ -1,0 +1,97 @@
+version: "3.8"
+
+
+networks:
+  monitoring:
+    driver: bridge
+
+volumes:
+  prometheus_data:
+  grafana_data:
+
+
+services:
+  board-app:
+    build: .
+    container_name: boardgame-app
+    ports:
+      - "8080:8080"
+    networks:
+      - monitoring
+
+
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped             # Automatically restarts unless manually stopped
+    networks:
+      - monitoring
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml             # Mounts custom Prometheus configuration file
+      - prometheus_data:/prometheus                     # Stores collected metrics persistently
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - "9090:9090"
+
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest                     # cAdvisor provides container-level metrics
+    container_name: cadvisor
+    ports:
+      - "8181:8080"
+    volumes:
+    - /:/rootfs:ro                                     # Read-only access to root filesystem
+    - /var/run:/var/run:rw                             # Access to Docker runtime
+    - /sys:/sys:ro                                     # System information
+    - /var/lib/docker/:/var/lib/docker:ro              # Docker container metadata
+    depends_on:
+      - redis                                          # Ensures Redis starts before cAdvisor
+    networks:
+      - monitoring
+
+
+  redis:
+    image: redis:latest                                # Redis used as cache / backend service for Django app
+    container_name: redis
+    ports:
+    - "6379:6379"
+
+
+  node-exporter:
+    image: prom/node-exporter:latest                   # Node Exporter provides host-level metrics
+    container_name: node-exporter
+    restart: unless-stopped                            # Keeps exporter running
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro                                   # Access to root filesystem
+    command:
+      - --path.procfs=/host/proc                       # Points to host /proc directory
+      - --path.rootfs=/rootfs
+      - --path.sysfs=/host/sys
+      - --collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)
+      - --collector.processes
+    ports:
+      - "9100:9100"
+    networks:
+      - monitoring                                    # Allows Prometheus to scrape host metrics
+
+
+  grafana:
+    image: grafana/grafana:latest                    # Grafana visualization tool
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana               # Persistent storage for dashboards and settings
+    networks:
+      - monitoring
+    restart: unless-stopped                         # Keeps Grafana running
+
+    depends_on:
+      - prometheus
