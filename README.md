@@ -23,6 +23,18 @@ This web application displays lists of board games and their reviews. While anyo
 - Twitter Bootstrap
 - Maven
 
+### 🔹 Docker & Container Monitoring
+![Docker Monitoring](https://github.com/DevOpsWithAlii/two-tier-flask-app/blob/main/templates/Screenshot%20(322).png)
+
+### 🔹 cAdvisor – Container Resource Usage
+![cAdvisor Dashboard](https://github.com/DevOpsWithAlii/two-tier-flask-app/blob/main/templates/Screenshot%20(326).png)
+
+### 🔹 Application & Database Metrics
+![MySQL Metrics](https://github.com/DevOpsWithAlii/two-tier-flask-app/blob/main/templates/Screenshot%20(323).png)
+
+
+
+
 ## Features
 
 - Full-Stack Application
@@ -51,4 +63,5 @@ This web application displays lists of board games and their reviews. While anyo
   - username: bugs    |     password: bunny (user role)
   - username: daffy   |     password: duck  (manager role)
 5. You can also sign-up as a new user and customize your role to play with the application! 😊
+
 
