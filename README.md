@@ -23,16 +23,23 @@ This web application displays lists of board games and their reviews. While anyo
 - Twitter Bootstrap
 - Maven
 
-### 🔹 Docker & Container Monitoring
-![Docker Monitoring](https://github.com/DevOpsWithAlii/two-tier-flask-app/blob/main/templates/Screenshot%20(322).png)
+### 🔹 Boardgame - Running
+![Boardgame-app Running](https://github.com/DevOpsWithAlii/Boardgame/blob/main/src/main/Screenshot%20(339).png)
 
-### 🔹 cAdvisor – Container Resource Usage
-![cAdvisor Dashboard](https://github.com/DevOpsWithAlii/two-tier-flask-app/blob/main/templates/Screenshot%20(326).png)
+### 🔹 Prometheus - Status Target Health
+![Prometheus](https://github.com/DevOpsWithAlii/Boardgame/blob/main/src/main/Screenshot%20(341).png)
 
-### 🔹 Application & Database Metrics
-![MySQL Metrics](https://github.com/DevOpsWithAlii/two-tier-flask-app/blob/main/templates/Screenshot%20(323).png)
+### 🔹 cADvisor
+![cADvisor](https://github.com/DevOpsWithAlii/Boardgame/blob/main/src/main/Screenshot%20(342).png)
 
+### 🔹 Resource Overview (associated JOB)，Instance：node-exporter:9100
+![Node-exporter](https://github.com/DevOpsWithAlii/Boardgame/blob/main/src/main/Screenshot%20(345).png)
 
+### 🔹 Linux Stats with Node Exporter
+![Linux & Node status](https://github.com/DevOpsWithAlii/Boardgame/blob/main/src/main/Screenshot%20(346).png)
+
+### 🔹 cADvisor Container Boardgame app Status
+![Linux & Node status](https://github.com/DevOpsWithAlii/Boardgame/blob/main/src/main/Screenshot%20(347).png)
 
 
 ## Features
@@ -63,5 +70,6 @@ This web application displays lists of board games and their reviews. While anyo
   - username: bugs    |     password: bunny (user role)
   - username: daffy   |     password: duck  (manager role)
 5. You can also sign-up as a new user and customize your role to play with the application! 😊
+
 
 
