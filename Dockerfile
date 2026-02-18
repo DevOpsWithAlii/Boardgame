@@ -16,6 +16,6 @@ WORKDIR /app
 
 COPY --from=build /app/target/database_service_project-0.0.4.jar app.jar
 
-EXPOSE 8080
+EXPOSE 8383
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
