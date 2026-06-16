@@ -29,7 +29,7 @@ services:
       - monitoring
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml             # Mounts custom Prometheus configuration file
-      - prometheus_data:/prometheus                     # Stores collected metrics persistently
+      - prometheus_data:/prometheus                     # Stores collected metrics persistently.
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
