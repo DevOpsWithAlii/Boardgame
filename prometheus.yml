@@ -1,7 +1,7 @@
 global:
   scrape_interval: 1m                                # Sets default scrape time to 1 minute
 
-scrape_configs:                                      # Defines what Prometheus should monitor.
+scrape_configs:                                      # Defines what Prometheus should monitor
   - job_name: 'prometheus'
     scrape_interval: 1m
     static_configs:                                 
